@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 50px;
+				background: orange;
+				margin: 20px;
+				/* transition: 2s; */
+			}
+
+			/* div:hover{ */
+			/* width: 200px; */
+			/* } */
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+
+	<script type="text/javascript">
+		let aDiv = document.getElementsByTagName('div');
+		let timerA;
+
+		function move(obj, target) {
+			// 三个盒子共用一个定时器，互相干扰，这时候需要三个定时器，obj指向的是鼠标触发的元素
+			clearInterval(obj.timerA);
+			obj.timerA = setInterval(function() {
+				if (obj.offsetWidth == target) {
+					clearInterval(obj.timerA);
+				} else {
+					let speed=(target-obj.offsetWidth)/10;
+					obj.style.width = obj.offsetWidth + speed + 'px';
+				}
+			}, 30)
+		}
+
+		for (let i = 0; i < 3; i++) {
+			aDiv[i].onmouseover = function() {
+				move(this, 200);
+			}
+
+			aDiv[i].onmouseout = function() {
+				move(this, 100);
+			}
+		}
+	</script>
+</html>
