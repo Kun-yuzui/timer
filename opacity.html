@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background: orange;
+				margin: 10px;
+				opacity: .3;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+
+		<script type="text/javascript">
+			let aDiv = document.getElementsByTagName('div');
+			let timerA;
+
+			function move(obj, target) {
+				clearInterval(timerA);
+				obj.timerA = setInterval(function() {
+					if (getComputedStyle(obj).opacity == target) {
+						clearInterval(obj.timerA);
+					} else {
+						let speed=(target-getComputedStyle(obj).opacity)/10;
+						obj.style.opacity = parseFloat(getComputedStyle(obj).opacity) + speed;
+					}
+				}, 20)
+			}
+
+			for (let i = 0; i < aDiv.length; i++) {
+				aDiv[i].onmouseover = function() {
+					move(this, 0.9);
+				}
+				aDiv[i].onmouseout = function() {
+					move(this , 0.3);
+				}
+			}
+		</script>
+	</body>
+</html>
