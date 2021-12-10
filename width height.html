@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background: orange;
+				margin: 10px;
+			}
+		</style>
+		<script src="move.js"></script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+
+		<script type="text/javascript">
+			let aDiv = document.getElementsByTagName('div');
+			let timerA;
+
+			//冗余部分
+			// function move1(obj, target) {
+			// 	clearInterval(obj.timerA);
+			// 	obj.timerA = setInterval(function() {
+			// 		if (obj.offsetWidth == target) {
+			// 			clearInterval(obj.timerA);
+			// 		} else {
+			// 			let speed = (target - obj.offsetWidth) / 10;
+			// 			obj.style.width = obj.offsetWidth + speed + 'px';
+			// 		}
+			// 	}, 30)
+			// }
+
+			// function move2(obj, target) {
+			// 	clearInterval(obj.timerA);
+			// 	obj.timerA = setInterval(function() {
+			// 		if (obj.offsetHeight == target) {
+			// 			clearInterval(obj.timerA);
+			// 		} else {
+			// 			let speed = (target - obj.offsetHeight) / 10;
+			// 			obj.style.height = obj.offsetHeight + speed + 'px';
+			// 		}
+			// 	}, 30)
+			// }
+
+			//改写部分,此处作为公式使用，作为外部链接使用
+			// function move(obj, name,target) {
+			// 	clearInterval(obj.timerA);
+			// 	obj.timerA = setInterval(function() {
+			// 		let nowStyle= parseFloat(getComputedStyle(obj)[name]);
+			// 		if (nowStyle == target) {
+			// 			clearInterval(obj.timerA);
+			// 		} else {
+			// 			let speed = (target - nowStyle) / 10;
+			// 			obj.style[name] = nowStyle + speed + 'px';
+			// 		}
+			// 	}, 30)
+			// }
+
+
+
+			aDiv[0].onmouseover = function() {
+				move(this, 'width', 200);
+			}
+			aDiv[0].onmouseout = function() {
+				move(this, 'width', 100);
+			}
+
+			aDiv[1].onmouseover = function() {
+				move(this, 'height', 200);
+			}
+			aDiv[1].onmouseout = function() {
+				move(this, 'height', 100);
+			}
+		</script>
+	</body>
+</html>
