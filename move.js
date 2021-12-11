@@ -1,7 +1,8 @@
+// MOVE缓冲运动框架
 function move(obj, name, target) {
 	clearInterval(obj.timerA);
 	obj.timerA = setInterval(function() {
-		let nowStyle = parseFloat(getComputedStyle(obj)[name]);
+		let nowStyle = parseInt(getComputedStyle(obj)[name]);
 		if (nowStyle == target) {
 			clearInterval(obj.timerA);
 		} else {
@@ -9,4 +10,5 @@ function move(obj, name, target) {
 			obj.style[name] = nowStyle + speed + 'px';
 		}
 	}, 30)
-}
+ }
+ 
